@@ -1,0 +1,10 @@
+<h2>Upcoming Dinners</h2>
+<ul id="dinner-list" class="unstyled">
+  <% @dinners.each do |dinner| %>
+  <li id="<%=dinner[:_id] %>">
+    <span class="pull-right">
+      <a href="/details/<%= dinner[:_id] %>" class="btn btn-success">Details</a>
+    </span>
+  </li>
+  <% end %>
+</ul>
