@@ -2,8 +2,7 @@
 <ul id="dinner-list" class="list-group">
   <% @dinners.each do |dinner| %>
   <li id="<%=dinner[:_id] %>" class="list-group-item">
-      <%=dinner[:title] %>
-      <a href="/details/<%= dinner[:_id] %>" class="btn-xs btn-success pull-right">Details</a>
+      <a href="/details/<%= dinner[:_id] %>"><%=dinner[:title] %></a> on <%= dinner[:event_date] %>
   </li>
   <% end %>
 </ul>

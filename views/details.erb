@@ -1,5 +1,5 @@
 <h2 style="margin-top:50px;">Dinner Details</h2>
-  <% @dinner.each do |dinner|  %>
+<% @dinner.each do |dinner|  %>
 <div>
   <p>
     <b>When: </b><%= dinner[:event_date] %>
@@ -11,7 +11,14 @@
     <b>Description: </b><%= dinner[:description] %>
   </p>
   <p>
-    <b>Organizer: </b><%= dinner[:hosted_by] %>(<%= dinner[:contact_phone] %>)
+    <b>Organizer: </b><%= dinner[:hosted_by] %> (<%= dinner[:contact_phone] %>)
   </p>
-    <% end %>
+
 </div>
+
+<div>
+  <a href="/edit/<%= dinner[:_id] %>" >Edit Dinner</a> |
+  <a href="/delete/<%= dinner[:_id] %>">Delete Dinner</a>
+</div>
+
+<% end %>

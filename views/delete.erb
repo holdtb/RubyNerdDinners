@@ -1,0 +1,7 @@
+<p style="margin-top:60px;">Are you sure you want to delete:</p>
+<blockquote><p><%= @dinner.title %></p></blockquote>
+<form action="/delete/<%= @dinner[:_id] %>" method="POST">
+  <input name="_method" type="hidden" value="delete" />
+  <button type="submit" class="btn btn-primary" name="ok">OK</button>
+  <button type="submit" class="btn" name="cancel">Cancel</button>
+</form>
