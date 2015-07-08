@@ -4,7 +4,6 @@ class Dinner
   include MongoMapper::Document
 
   #Attributes
-  key :_id
   key :title, String, :required => true
   key :event_date, Date
   key :description, String, :required => true
