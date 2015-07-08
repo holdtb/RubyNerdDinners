@@ -15,8 +15,11 @@ class NerdDinner < Sinatra::Base
   get '/' do
     initial_date = Time.new
     @dinners = Dinner.where(:event_date => {:$gte => initial_date})
-    #@dinners = Dinner.all
-    erb :index
+    if @dinners.count > 0
+      erb :index
+    else
+      erb :no_upcoming_dinners
+    end
   end
 
   get '/create' do
