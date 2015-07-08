@@ -46,11 +46,19 @@ class NerdDinner < Sinatra::Base
 
   get '/delete/:id' do
     @dinner = Dinner.find_one({:_id => BSON::ObjectId(params[:id])})
-    puts @dinner
     if @dinner.nil?
       erb :not_found
     else
       erb :delete
+    end
+  end
+
+  post '/delete/:id' do
+    if params.has_key?("ok")
+      Dinner.remove({:_id => BSON::ObjectId(params[:id])})
+      redirect '/'
+    else
+      redirect '/'
     end
   end
 
