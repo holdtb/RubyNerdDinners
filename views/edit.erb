@@ -1,0 +1,12 @@
+<form class="form-horizontal" method="POST" action="/create" style="margin-top:50px">
+  <fieldset>
+  <legend>Create a Dinner</legend>
+
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="title_input">Title</label>
+    <div class="col-md-4">
+      <input id="title_input" name="title_input" type="text" placeholder="" class="form-control input-md" required="true" value="<%= @dinner[:title] %>" \>
+    </div>
+  </div>
+</fieldset>

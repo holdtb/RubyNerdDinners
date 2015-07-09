@@ -65,5 +65,19 @@ class NerdDinner < Sinatra::Base
     end
   end
 
+ get '/edit/:id' do
+   id = params[:id]
+   puts "THIS IS OUR ID #{id}"
+   puts id.class
+#  binding.pry
+   @dinner = Dinner.find(id.to_s)
+   erb :edit
+ end
+
+post '/edit/:id' do
+  @dinner = Dinner.find({:_id => BSON::ObjectId(params[:id])})
+
+  @dinner.set(:title => params[:title_input])
+end
 
 end
