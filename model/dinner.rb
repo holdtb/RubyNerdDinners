@@ -16,5 +16,5 @@ class Dinner
   timestamps!
 
   #Associations
-  #many :rsvps
+  many :rsvps
 end

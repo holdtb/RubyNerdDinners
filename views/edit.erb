@@ -1,4 +1,4 @@
-<form class="form-horizontal" method="POST" action="/create" style="margin-top:50px">
+<form class="form-horizontal" method="POST" action="/edit/<%=@dinner.id %>" style="margin-top:50px">
   <fieldset>
   <legend>Create a Dinner</legend>
 
@@ -9,4 +9,58 @@
       <input id="title_input" name="title_input" type="text" placeholder="" class="form-control input-md" required="true" value="<%= @dinner[:title] %>" \>
     </div>
   </div>
-</fieldset>
+
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="event_date_input">Event Date</label>
+    <div class="col-md-4">
+      <input id="event_date_input" name="event_date_input" type="text" placeholder="" class="form-control input-md" required="true" value="<%= @dinner[:event_date] %>" >
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="description_input">Description</label>
+    <div class="col-md-4">
+      <input id="description_input" name="description_input" type="text" placeholder="" class="form-control input-md" required="true" value="<%= @dinner[:description] %>" >
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="hosted_by_input">Hosted By</label>
+    <div class="col-md-4">
+      <input id="hosted_by_input" name="hosted_by_input" type="text" placeholder="" class="form-control input-md" required="true"  value="<%= @dinner[:hosted_by] %>" >
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="hosted_by_input">Contact Phone</label>
+    <div class="col-md-4">
+      <input id="contact_phone_input" name="contact_phone_input" type="text" placeholder="" class="form-control input-md" required="true" value="<%= @dinner[:contact_phone] %>" >
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="address_input">Address</label>
+    <div class="col-md-4">
+      <input id="address_input" name="address_input" type="text" placeholder="" class="form-control input-md" required="true" value="<%= @dinner[:address] %>" >
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="country_input">Country</label>
+    <div class="col-md-4">
+      <input id="country_input" name="country_input" type="text" placeholder="" class="form-control input-md" required="true" value="<%= @dinner[:country] %>" >
+    </div>
+  </div>
+
+  <div class="row">
+     <div class="center-block" style="width:200px;">
+        <button type="submit" value="Submit">Submit</button>
+     </div>
+  </div>
+
+  </fieldset>
+</form>
+
+<div>
+  <a href="../">Home</a>
+</div>

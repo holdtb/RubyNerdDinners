@@ -1,0 +1,24 @@
+<form class="form-horizontal" method="POST" action="/rsvp/<%=@id %>" style="margin-top:50px">
+  <fieldset>
+  <legend>RSVP for a Dinner</legend>
+  <!-- Text input-->
+    <div class="form-group">
+
+      <label class="col-md-4 control-label" for="title_input">Your Name</label>
+
+      <div class="col-md-4">
+        <input id="attendee_name" name="attendee_name" type="text" placeholder="" class="form-control input-md" required="true" \>
+      </div>
+
+      <div class="row">
+        <div class="center-block" style="width:200px;">
+          <button type="submit" value="Submit">Submit</button>
+        </div>
+      </div>
+
+    </div>
+  </fieldset>
+</form>
+<div>
+  <a href="../">Home</a>
+</div>

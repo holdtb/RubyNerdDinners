@@ -2,6 +2,7 @@ require 'rubygems'
 require 'sinatra/base'
 require 'sinatra/reloader'
 require 'mongo_mapper'
+require_relative 'model/rsvp'
 require_relative 'model/dinner'
 require 'chronic'
 require 'date'
@@ -34,13 +35,12 @@ class NerdDinner < Sinatra::Base
        :contact_phone => params[:contact_phone_input],
        :address => params[:address_input],
        :country => params[:country_input])
-
      redirect '/'
   end
 
   get '/details/:id' do
-    @dinner = Dinner.where({:_id => params[:id]})
-    if @dinner.empty?
+    @dinner = Dinner.find(params[:id])
+    if @dinner.nil?
       erb :not_found
     else
       erb :details
@@ -48,7 +48,7 @@ class NerdDinner < Sinatra::Base
   end
 
   get '/delete/:id' do
-    @dinner = Dinner.find_one({:_id => BSON::ObjectId(params[:id])})
+    @dinner = Dinner.find(params[:id])
     if @dinner.nil?
       erb :not_found
     else
@@ -65,19 +65,36 @@ class NerdDinner < Sinatra::Base
     end
   end
 
- get '/edit/:id' do
-   id = params[:id]
-   puts "THIS IS OUR ID #{id}"
-   puts id.class
-#  binding.pry
-   @dinner = Dinner.find(id.to_s)
-   erb :edit
- end
+  get '/edit/:id' do
+    @dinner = Dinner.find(params[:id])
+    erb :edit
+  end
 
-post '/edit/:id' do
-  @dinner = Dinner.find({:_id => BSON::ObjectId(params[:id])})
+  post '/edit/:id' do
+    @dinner = Dinner.find(params[:id])
+    @dinner.update_attributes(:title => params[:title_input],
+         :event_date => Chronic.parse(params[:event_date_input]),
+         :description => params[:description_input],
+         :hosted_by => params[:hosted_by_input],
+         :contact_phone => params[:contact_phone_input],
+         :address => params[:address_input],
+         :country => params[:country_input])
+    @dinner.save
+    redirect "/details/#{params[:id]}"
+  end
 
-  @dinner.set(:title => params[:title_input])
-end
+  get '/rsvp/:id' do
+    @id = params[:id]
+    erb :rsvp
+  end
+
+  post '/rsvp/:id' do
+    @dinner = Dinner.find(params[:id])
+    RSVP.create!(
+      :attendee_name => params[:attendee_name],
+      :dinner => @dinner)
+    redirect '/'
+  end
+
 
 end
