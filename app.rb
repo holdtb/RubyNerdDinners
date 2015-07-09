@@ -40,6 +40,12 @@ class NerdDinner < Sinatra::Base
 
   get '/details/:id' do
     @dinner = Dinner.find(params[:id])
+    @attendees = RSVP.where(:dinner_id => @dinner[:_id])
+    @attendees.each do |att|
+      puts att.attendee_name
+    end
+    puts @attendees.class
+    puts @attendees
     if @dinner.nil?
       erb :not_found
     else
@@ -93,7 +99,7 @@ class NerdDinner < Sinatra::Base
     RSVP.create!(
       :attendee_name => params[:attendee_name],
       :dinner => @dinner)
-    redirect '/'
+    redirect "/details/#{params[:id]}"
   end
 
 

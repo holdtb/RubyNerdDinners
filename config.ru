@@ -8,6 +8,7 @@ require 'pry-byebug'
 
 Bundler.require
 
-map "/" do
-  run NerdDinner
-end
+root = ::File.dirname(__FILE__)
+require ::File.join(root, 'app')
+run NerdDinner.new
+

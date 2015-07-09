@@ -1,4 +1,7 @@
-<h2 style="margin-top:50px;">Dinner Details</h2>
+<div>
+  <h2 style="margin-top:50px;">Dinner Details</h2>
+  <a href="/rsvp/<%= @dinner[:_id] %>" class="btn-xs btn-danger pull-right">RSVP</a>
+</div>
 <div>
   <p>
     <b>When: </b><%= @dinner[:event_date] %>
@@ -12,11 +15,19 @@
   <p>
     <b>Organizer: </b><%= @dinner[:hosted_by] %> (<%= @dinner[:contact_phone] %>)
   </p>
-
+  <p>
+    <b>Attendees: </b>
+      <ul>
+        <% @attendees.each do |attendee| %>
+          <li>
+            <%= attendee.attendee_name %>
+          </li>
+          <% end %>
+      </ul>
+  </p>
 </div>
 
 <div>
   <a href="/edit/<%= @dinner[:_id] %>" >Edit dinner</a> |
   <a href="/delete/<%= @dinner[:_id] %>">Delete dinner</a>
 </div>
-

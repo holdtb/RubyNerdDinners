@@ -11,6 +11,5 @@ gem 'rspec', '~> 3.3.0'
 gem 'chronic'
 
 
-
 gem 'pry'
 gem 'pry-byebug'
